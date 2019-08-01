@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import {
     MatButtonModule,
@@ -10,10 +11,11 @@ import {
     MatToolbarModule
 } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
-
-import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
+import { ServiceWorkerModule } from "@angular/service-worker";
+
+import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
@@ -54,7 +56,8 @@ const routes: Routes = [
         MatSidenavModule,
         MatIconModule,
         MatListModule,
-        MatCardModule
+        MatCardModule,
+        ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production })
     ],
     providers: [],
     exports: [],
