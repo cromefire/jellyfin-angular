@@ -8,15 +8,15 @@ import { AuthService } from "../auth.service";
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent {
-    @ViewChild("url", { static: true }) private url: any;
+    @ViewChild("url", { static: false }) private url: any;
     @ViewChild("username", { static: true }) private username: any;
     @ViewChild("password", { static: true }) private password: any;
 
-    constructor(private authService: AuthService, private apiService: ApiService) {}
+    constructor(private authService: AuthService, public apiService: ApiService) {}
 
     public async login() {
         // Temporary
-        if (!this.apiService) {
+        if (!this.apiService.base) {
             const url = this.url.nativeElement.value;
             this.apiService.base = url;
             localStorage.setItem("jellyfin-url", url);
@@ -24,7 +24,6 @@ export class LoginComponent {
         const username = this.username.nativeElement.value;
         const password = this.password.nativeElement.value;
 
-        console.log("Logging in...");
         await this.authService.login(username, password);
     }
 }

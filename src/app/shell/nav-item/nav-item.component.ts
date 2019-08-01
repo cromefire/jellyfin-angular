@@ -6,9 +6,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     styleUrls: ["./nav-item.component.scss"]
 })
 export class NavItemComponent {
-    @Input("href") private href: string;
-    @Input("icon") private icon: string;
-    @Output("click") private onClick = new EventEmitter<MouseEvent>();
-
-    constructor() {}
+    @Input("href") public href: string;
+    @Input("icon") public icon: string;
+    @Output("click") public onClick = new EventEmitter<MouseEvent>();
 }

@@ -12,5 +12,5 @@ export interface TileItem {
     styleUrls: ["./tile.component.scss"]
 })
 export class TileComponent {
-    @Input() private item: TileItem;
+    @Input() public item: TileItem;
 }

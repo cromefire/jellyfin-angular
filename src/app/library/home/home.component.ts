@@ -8,13 +8,13 @@ import { TileItem } from "./slider/tile/tile.component";
 })
 export class HomeComponent {
     // All images are just random tmdb images, inserted as design stubs
-    private myMedia: TileItem[] = [
+    public myMedia: TileItem[] = [
         {
             image: "https://image.tmdb.org/t/p/original/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
             subtitle: "Movies"
         }
     ];
-    private continueWatching: TileItem[] = [
+    public continueWatching: TileItem[] = [
         {
             image: "https://image.tmdb.org/t/p/original/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
             subtitle: "The Lion King",
@@ -26,7 +26,7 @@ export class HomeComponent {
             year: "2019"
         }
     ];
-    private latestMovies: TileItem[] = [
+    public latestMovies: TileItem[] = [
         {
             image: "https://image.tmdb.org/t/p/original/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
             subtitle: "The Lion King",
