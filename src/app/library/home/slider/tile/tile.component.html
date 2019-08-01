@@ -1,0 +1,9 @@
+<mat-card mat-ripple>
+    <img mat-card-image [src]="item.image" [alt]="item.subtitle" (dragstart)="$event.preventDefault()" />
+    <mat-card-subtitle>
+        {{ item.subtitle }}
+        <div *ngIf="item.year" class="year">
+            {{ item.year }}
+        </div>
+    </mat-card-subtitle>
+</mat-card>

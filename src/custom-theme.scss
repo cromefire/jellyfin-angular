@@ -1,0 +1,75 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$jellyfin-angular-primary: mat-palette($mat-lime);
+$jellyfin-angular-accent: mat-palette($mat-lime, A500, A200, A700);
+
+// The warn palette is optional (defaults to red).
+$jellyfin-angular-warn: mat-palette($mat-red);
+
+$background: (
+    normal: #3f3d3a,
+    dark: #353330,
+    darker: #2a2825,
+    light: #55534f,
+    lighter: #605e5a
+);
+
+// Background palette for dark theme.
+$jellyfin-dark-theme-background: (
+    status-bar: map_get($background, darker),
+    app-bar: map_get($background, dark),
+    background: map_get($background, normal),
+    hover: rgba(white, 0.04),
+    card: map_get($background, light),
+    dialog: map_get($background, light),
+    disabled-button: rgba(white, 0.12),
+    raised-button: map-get($background, light),
+    focused-button: $light-focused,
+    selected-button: map_get($background, dark),
+    selected-disabled-button: map_get($background, dark),
+    disabled-button-toggle: map_get($background, darker),
+    unselected-chip: map_get($background, lighter),
+    disabled-list-option: map_get($background, darker)
+);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$jellyfin-angular-theme: (
+    primary: $jellyfin-angular-primary,
+    accent: $jellyfin-angular-accent,
+    warn: $jellyfin-angular-warn,
+    is-dark: true,
+    foreground: $mat-dark-theme-foreground,
+    background: $jellyfin-dark-theme-background
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($jellyfin-angular-theme);
+
+html,
+body {
+    height: 100%;
+    background-color: map_get($background, normal);
+    color: white;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: rgba(0, 0, 0, 0.4);
+}

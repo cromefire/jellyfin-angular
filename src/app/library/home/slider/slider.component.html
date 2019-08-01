@@ -1,0 +1,8 @@
+<ngu-carousel #carousel [class.scroll]="tiles.length > carousel.items" [inputs]="carouselConfig" [dataSource]="tiles">
+    <ngu-tile *nguCarouselDef="let item; let i = index">
+        <jellyfin-tile [item]="tiles[i]"></jellyfin-tile>
+    </ngu-tile>
+
+    <button NguCarouselPrev mat-fab class="scroll-fab left" [disabled]="carousel.isFirst">&lt;</button>
+    <button NguCarouselNext mat-fab class="scroll-fab right" [disabled]="carousel.isLast">&gt;</button>
+</ngu-carousel>

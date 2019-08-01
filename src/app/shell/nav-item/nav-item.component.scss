@@ -1,0 +1,13 @@
+::ng-deep .mat-list-item-content {
+    padding-left: 0 !important;
+}
+
+.nav-with-icon {
+    padding: .9rem 0 .9rem 2rem;
+    display: flex;
+    user-select: none;
+
+    mat-icon {
+        margin: auto 0.75rem auto 0;
+    }
+}

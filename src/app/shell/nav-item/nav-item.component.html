@@ -1,0 +1,8 @@
+<a mat-list-item [routerLink]="href" (click)="onClick.emit($event)" (dragstart)="$event.preventDefault()">
+    <div class="nav-with-icon">
+        <mat-icon>{{icon}}</mat-icon>
+        <span>
+            <ng-content></ng-content>
+        </span>
+    </div>
+</a>

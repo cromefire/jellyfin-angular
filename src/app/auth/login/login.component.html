@@ -1,0 +1,14 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<form class="login-form">
+    <div class="container">
+        <mat-form-field>
+            <input #username matInput placeholder="Username" />
+        </mat-form-field>
+        <mat-form-field>
+            <input #password matInput placeholder="Password" type="password" />
+        </mat-form-field>
+        <button mat-button color="primary" type="submit" (click)="$event.preventDefault(); login()">
+            Login
+        </button>
+    </div>
+</form>

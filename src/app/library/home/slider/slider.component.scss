@@ -1,0 +1,23 @@
+ngu-carousel {
+    .scroll-fab {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        margin: auto;
+        opacity: 0;
+        transition: opacity ease-in-out 0.25s;
+
+        &.left {
+            left: 0;
+        }
+
+        &.right {
+            right: 0;
+        }
+    }
+}
+
+.scroll:hover .scroll-fab {
+    opacity: 1;
+}

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'jellyfin-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+    selector: "jellyfin-root",
+    templateUrl: "./app.component.html",
+    styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = 'jellyfin-angular';
+    public title = "jellyfin-angular";
 }
