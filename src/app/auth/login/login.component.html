@@ -1,6 +1,10 @@
 <!--suppress HtmlFormInputWithoutLabel -->
 <form class="login-form">
     <div class="container">
+        <mat-form-field *ngIf="!apiService.base">
+            <!-- Temporary -->
+            <input #url matInput placeholder="Server URL" />
+        </mat-form-field>
         <mat-form-field>
             <input #username matInput placeholder="Username" />
         </mat-form-field>

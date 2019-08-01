@@ -1,16 +1,15 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { retry } from "rxjs/operators";
-import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: "root"
 })
 export class ApiService {
-    private readonly base: string;
+    public base: string;
 
     constructor(private http: HttpClient) {
-        this.base = environment.serverUrl;
+        this.base = localStorage.getItem("jellyfin-url");
     }
 
     public get<Response>(
