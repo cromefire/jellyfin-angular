@@ -206,10 +206,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/language-service@~8.1.2":
-  version "8.1.3"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-8.1.3.tgz#beffcb8ca85410c1b4c82101a47dad7ffd5545af"
-  integrity sha512-9s2LWlRlBhUXZ0oWh5ojYKnQgXgYH/VifEXteRWmEJ0dlwDApgw5Jk6usstDhv09XQvLdoumMQwOXf07zjcJrQ==
+"@angular/language-service@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-8.2.0.tgz#98c3d01807a08750b85bcc8bcfface06e2f55b6e"
+  integrity sha512-fv+BF4Fgy/JASi3lpfwxDFsByWfpsASr5wt2zFMozHSb0ZsJ22OpyvdnjPfEaAOLDV0qcXIZEZ6O+NjRq2qurQ==
 
 "@angular/material@^8.1.2":
   version "8.1.2"
@@ -354,13 +354,6 @@
     rxjs "6.4.0"
     tree-kill "1.2.1"
     webpack-sources "1.3.0"
-
-"@ngu/carousel@^1.5.5":
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/@ngu/carousel/-/carousel-1.5.5.tgz#285001d54020fbfa74d07da7df68d802175f92e2"
-  integrity sha512-tPDThxM325ss4fBzUtu7OExuC0aR8QIZIHJwYHpfF955TR9Zs0argokopS8DX9mCTM3tYL+Qgy1ui0KjCJzHBg==
-  dependencies:
-    tslib "^1.9.0"
 
 "@schematics/angular@8.1.3":
   version "8.1.3"
@@ -2874,6 +2867,15 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+git-describe@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/git-describe/-/git-describe-4.0.4.tgz#f3d55bce309becf6dc27fed535d380a621967e8c"
+  integrity sha512-L1X9OO1e4MusB4PzG9LXeXCQifRvyuoHTpuuZ521Qyxn/B0kWHWEOtsT4LsSfSNacZz0h4ZdYDsDG7f+SrA3hg==
+  dependencies:
+    lodash "^4.17.11"
+  optionalDependencies:
+    semver "^5.6.0"
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -4467,6 +4469,13 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+ngx-infinite-scroll@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-infinite-scroll/-/ngx-infinite-scroll-8.0.0.tgz#4fc1e1d1bb50baedc4793c28115faec656a8d027"
+  integrity sha512-9KRCFAszLttd735CY1GbqtiVRdEvAGWUL8FQqD+iBGitbhgws4OZS+qdKIV+lrJzYXh+Y2XnOOSiUFADOo4+fQ==
+  dependencies:
+    opencollective-postinstall "^2.0.2"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -4747,6 +4756,11 @@ open@6.4.0:
   integrity sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==
   dependencies:
     is-wsl "^1.1.0"
+
+opencollective-postinstall@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
+  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
 
 opn@^5.5.0:
   version "5.5.0"

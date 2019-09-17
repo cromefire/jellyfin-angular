@@ -1,22 +1,37 @@
 <mat-sidenav-container>
     <mat-sidenav #sidemenu id="sidemenu">
         <mat-nav-list>
-            <jellyfin-nav-item icon="home" href="/" (click)="sidemenu.close()">Home</jellyfin-nav-item>
+            <jellyfin-nav-item icon="home" href="/" (click)="sidemenu.close()">
+                Home
+            </jellyfin-nav-item>
             <jellyfin-nav-subheading>Media</jellyfin-nav-subheading>
-            <jellyfin-nav-item icon="movie" href="/movies" (click)="sidemenu.close()">Movies</jellyfin-nav-item>
+            <jellyfin-nav-item icon="movie" href="/movies" (click)="sidemenu.close()">
+                Movies
+            </jellyfin-nav-item>
             <jellyfin-nav-subheading>Admin</jellyfin-nav-subheading>
-            <jellyfin-nav-item icon="dashboard" href="/admin" (click)="sidemenu.close()">Dashboard</jellyfin-nav-item>
-            <jellyfin-nav-item icon="edit" href="/admin/metadata" (click)="sidemenu.close()">Metadata</jellyfin-nav-item>
+            <jellyfin-nav-item icon="dashboard" href="/admin" (click)="sidemenu.close()">
+                Dashboard
+            </jellyfin-nav-item>
+            <jellyfin-nav-item icon="edit" href="/admin/metadata" (click)="sidemenu.close()">
+                Metadata
+            </jellyfin-nav-item>
             <jellyfin-nav-subheading>User</jellyfin-nav-subheading>
-            <jellyfin-nav-item icon="settings" href="/settings" (click)="sidemenu.close()">Settings</jellyfin-nav-item>
-            <jellyfin-nav-item icon="exit_to_app" href="/logout" (click)="sidemenu.close()">Sign Out</jellyfin-nav-item>
+            <jellyfin-nav-item icon="settings" href="/settings" (click)="sidemenu.close()">
+                Settings
+            </jellyfin-nav-item>
+            <jellyfin-nav-item icon="exit_to_app" href="/logout" (click)="sidemenu.close()">
+                Sign Out
+            </jellyfin-nav-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar>
             <button mat-icon-button (click)="sidemenu.open()"><mat-icon>menu</mat-icon></button>
-            <span>Jellyfin</span>
+            <a routerLink="/">Jellyfin</a>
+            <a routerLink="/" class="brand"><img src="assets/icons/jellyfin.svg" alt="logo" /></a>
         </mat-toolbar>
-        <router-outlet></router-outlet>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
     </mat-sidenav-content>
 </mat-sidenav-container>

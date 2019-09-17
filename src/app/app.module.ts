@@ -1,5 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import {
     MatButtonModule,
     MatCardModule,
@@ -57,7 +58,8 @@ const routes: Routes = [
         MatIconModule,
         MatListModule,
         MatCardModule,
-        ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production })
+        ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
+        ReactiveFormsModule
     ],
     providers: [],
     exports: [],

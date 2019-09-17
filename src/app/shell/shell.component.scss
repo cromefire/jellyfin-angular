@@ -9,3 +9,30 @@ mat-sidenav-content {
         min-width: 20rem;
     }
 }
+
+mat-toolbar {
+    position: fixed;
+    z-index: 100;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .brand {
+        height: 32px;
+        margin: auto;
+
+        img {
+            height: 32px;
+        }
+    }
+}
+
+main {
+    box-sizing: border-box;
+    padding-top: 64px;
+    height: 100%;
+    width: 100%
+}

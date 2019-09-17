@@ -1,55 +1,103 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { retry } from "rxjs/operators";
+import { from, Observable } from "rxjs";
+import { retry, switchMap } from "rxjs/operators";
+import { DeviceService } from "../device/device.service";
 
+// General interface
+export interface RequestOptions {
+    token?: string;
+    headers?: { [header: string]: string };
+    query?: { [key: string]: string };
+}
+
+export abstract class CommonApiService {
+    public base: string;
+
+    protected constructor(protected deviceService: DeviceService) {}
+
+    public abstract get<Response>(url: string, options?: RequestOptions): Observable<Response>;
+
+    public abstract post<Request, Response>(
+        url: string,
+        request: Request,
+        options?: RequestOptions
+    ): Observable<Response>;
+
+    protected async assembleAuthHeader(token?: string) {
+        const clientInfo = this.deviceService.client;
+
+        const query: { [key: string]: string } = {
+            Client: await clientInfo.getName(),
+            Device: await clientInfo.getDevice(),
+            DeviceId: await clientInfo.getDeviceId(),
+            Version: await clientInfo.getVersion()
+        };
+
+        if (token) {
+            query.Token = token;
+        }
+
+        const queryString = Object.entries(query)
+            .map(([key, value]) => `${key}="${value}"`)
+            .join(", ");
+
+        return `MediaBrowser ${queryString}`;
+    }
+
+    public assembleUrl(url: string, query?: { [key: string]: string }): string {
+        const assembledUrl = new URL(url, this.base);
+        if (query) {
+            for (const [key, value] of Object.entries(query)) {
+                assembledUrl.searchParams.append(key, value);
+            }
+        }
+        return assembledUrl.href;
+    }
+}
+
+// Web specific service
 @Injectable({
     providedIn: "root"
 })
-export class ApiService {
-    public base: string;
-
-    constructor(private http: HttpClient) {
+export class ApiService extends CommonApiService {
+    constructor(private http: HttpClient, deviceService: DeviceService) {
+        super(deviceService);
         this.base = localStorage.getItem("jellyfin-url");
     }
 
-    public get<Response>(
-        url: string,
-        token?: string,
-        headers?: {
-            [header: string]: string;
-        }
-    ): Promise<Response> {
-        return this.http
-            .get<Response>(this.assembleUrl(url), {
-                headers
-            })
-            .pipe(retry(3))
-            .toPromise();
+    public get<Response>(url: string, options: RequestOptions = {}): Observable<Response> {
+        return from(this.assembleAuthHeader(options.token)).pipe(
+            switchMap(
+                (authHeader): Observable<Response> => {
+                    const headers = Object.assign(options.headers || {}, {
+                        "X-Emby-Authorization": authHeader,
+                        Accept: "application/json"
+                    });
+                    return this.http.get<Response>(this.assembleUrl(url, options.query), {
+                        headers
+                    });
+                }
+            ),
+            retry(3)
+        );
     }
 
     public post<Request, Response>(
         url: string,
         request: Request,
-        token?: string,
-        headers?: {
-            [header: string]: string;
-        }
-    ): Promise<Response> {
-        headers = Object.assign(headers || {}, {
-            "X-Emby-Authorization":
-                'MediaBrowser Client="Jellyfin Web", Device="Firefox", DeviceId="TW96aWxsYS81LjAgKFgxMTsgVWJ1bnR1OyBMaW51eCB4ODZfNjQ7IHJ2OjY4LjApIEdlY2tvLzIwMTAwMTAxIEZpcmVmb3gvNjguMHwxNTYzMjcwNDg1ODE3", Version="10.3.7"',
-            Accept: "application/json"
-        });
-        return this.http
-            .post<Response>(this.assembleUrl(url), request, {
-                headers
+        options: RequestOptions = {}
+    ): Observable<Response> {
+        return from(this.assembleAuthHeader(options.token)).pipe(
+            switchMap(authHeader => {
+                const headers = Object.assign(options.headers || {}, {
+                    "X-Emby-Authorization": authHeader,
+                    Accept: "application/json"
+                });
+                return this.http.post<Response>(this.assembleUrl(url, options.query), request, {
+                    headers
+                });
             })
-            .toPromise();
-    }
-
-    private assembleUrl(url: string): string {
-        const assembledUrl = new URL(this.base);
-        assembledUrl.pathname = url;
-        return assembledUrl.href;
+        );
     }
 }

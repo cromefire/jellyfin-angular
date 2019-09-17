@@ -58,14 +58,17 @@ $jellyfin-angular-theme: (
 // that you are using.
 @include angular-material-theme($jellyfin-angular-theme);
 
+html {
+    scrollbar-color: map_get($background, "lighter") map_get($background, "dark");
+}
+
 html,
 body {
     height: 100%;
-    background-color: map_get($background, normal);
-    color: white;
 }
 
 body {
+    color: white;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }

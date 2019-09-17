@@ -1,12 +1,67 @@
-<section>
-    <h2>My Media</h2>
-    <jellyfin-slider [tiles]="myMedia"></jellyfin-slider>
-</section>
-<section>
-    <h2>Continue watching</h2>
-    <jellyfin-slider [tiles]="continueWatching"></jellyfin-slider>
-</section>
-<section>
-    <h2>Latest movies</h2>
-    <jellyfin-slider [tiles]="latestMovies"></jellyfin-slider>
-</section>
+<ng-container *ngIf="loaded">
+    <section>
+        <h2>My Media</h2>
+        <jellyfin-slider>
+            <div class="tile landscape" *ngFor="let view of myMedia">
+                <mat-card mat-ripple>
+                    <img
+                        mat-card-image
+                        [src]="view.image"
+                        [alt]="view.subtitle"
+                        (dragstart)="$event.preventDefault()"
+                    />
+                    <mat-card-subtitle>
+                        {{ view.subtitle }}
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+        </jellyfin-slider>
+    </section>
+    <section>
+        <h2>Continue watching</h2>
+        <jellyfin-slider>
+            <div class="tile landscape" *ngFor="let movie of continueWatching">
+                <mat-card mat-ripple [matTooltip]="movie.originalTitle" matTooltipPosition="below" aria-label="movie.originalTitle">
+                    <img
+                        *ngIf="movie.image"
+                        mat-card-image
+                        [src]="movie.image"
+                        [alt]="movie.subtitle"
+                        (dragstart)="$event.preventDefault()"
+                    />
+                    <div *ngIf="!movie.image" mat-card-image class="image-na"></div>
+                    <mat-card-subtitle>
+                        {{ movie.subtitle }}
+                        <div *ngIf="movie.year" class="year">
+                            {{ movie.year }}
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+        </jellyfin-slider>
+    </section>
+    <section>
+        <h2>Latest movies</h2>
+        <jellyfin-slider>
+            <div class="tile portrait" *ngFor="let movie of latestMovies">
+                <mat-card mat-ripple [matTooltip]="movie.originalTitle" matTooltipPosition="below" aria-label="movie.originalTitle">
+                    <img
+                        *ngIf="movie.image"
+                        mat-card-image
+                        [src]="movie.image"
+                        [alt]="movie.subtitle"
+                        (dragstart)="$event.preventDefault()"
+                    />
+                    <div *ngIf="!movie.image" mat-card-image class="image-na"></div>
+                    <mat-card-subtitle>
+                        {{ movie.subtitle }}
+                        <div *ngIf="movie.year" class="year">
+                            {{ movie.year }}
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+        </jellyfin-slider>
+    </section>
+</ng-container>
+<mat-spinner *ngIf="!loaded"></mat-spinner>

@@ -1,23 +1,46 @@
-ngu-carousel {
-    .scroll-fab {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 2;
-        margin: auto;
-        opacity: 0;
-        transition: opacity ease-in-out 0.25s;
+.wrapper {
+    position: relative;
+}
 
-        &.left {
-            left: 0;
-        }
+.slider {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 
-        &.right {
-            right: 0;
-        }
+    & > ::ng-deep * {
+        scroll-snap-align: start;
+    }
+
+    .start {
+        min-width: 1px;
+    }
+
+    .end {
+        min-width: 1px;
+        scroll-snap-align: end;
     }
 }
 
-.scroll:hover .scroll-fab {
+.scroll-fab {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: auto;
+    opacity: 0;
+    transition: opacity ease-in-out 0.25s;
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
+}
+
+.wrapper:hover .scroll-fab {
     opacity: 1;
 }

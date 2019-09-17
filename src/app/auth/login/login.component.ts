@@ -1,4 +1,5 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "../../common/api/api.service";
 import { AuthService } from "../auth.service";
 
@@ -8,22 +9,25 @@ import { AuthService } from "../auth.service";
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent {
-    @ViewChild("url", { static: false }) private url: any;
-    @ViewChild("username", { static: true }) private username: any;
-    @ViewChild("password", { static: true }) private password: any;
+    public loginForm = new FormGroup({
+        // url: Temporary
+        url: new FormControl(this.apiService.base, [Validators.required]),
+        username: new FormControl("", [Validators.required]),
+        password: new FormControl("", [Validators.required])
+    });
 
     constructor(private authService: AuthService, public apiService: ApiService) {}
 
     public async login() {
-        // Temporary
-        if (!this.apiService.base) {
-            const url = this.url.nativeElement.value;
+        if (this.loginForm.valid) {
+            const url = this.loginForm.value.url;
             this.apiService.base = url;
             localStorage.setItem("jellyfin-url", url);
-        }
-        const username = this.username.nativeElement.value;
-        const password = this.password.nativeElement.value;
 
-        await this.authService.login(username, password);
+            const username = this.loginForm.value.username;
+            const password = this.loginForm.value.password;
+
+            await this.authService.login(username, password);
+        }
     }
 }

@@ -1,6 +1,4 @@
-import { Component, Input } from "@angular/core";
-import { NguCarouselConfig } from "@ngu/carousel";
-import { TileItem } from "./tile/tile.component";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 
 @Component({
     selector: "jellyfin-slider",
@@ -8,17 +6,33 @@ import { TileItem } from "./tile/tile.component";
     styleUrls: ["./slider.component.scss"]
 })
 export class SliderComponent {
-    @Input() public tiles: TileItem[];
-    public carouselConfig: NguCarouselConfig = {
-        grid: { xs: 1, sm: 2, md: 4, lg: 5, all: 0 },
-        slide: 1,
-        speed: 250,
-        load: 2,
-        velocity: 0,
-        point: {
-            visible: false
-        },
-        touch: true,
-        easing: "cubic-bezier(0, 0, 0.2, 1)"
-    };
+    @ViewChild("slider", { static: true }) public slider: ElementRef<HTMLDivElement>;
+
+    public more() {
+        console.log("load more");
+    }
+
+    public left() {
+        const parentRect = (this.slider.nativeElement.getClientRects() as DOMRectList)[0];
+        for (const child of Array.from(this.slider.nativeElement.children).reverse()) {
+            const rect = (child.getClientRects() as DOMRectList)[0];
+            const beyondBorder = rect.right < parentRect.left;
+            if (beyondBorder) {
+                child.scrollIntoView({ behavior: "smooth", block: "start" });
+                break;
+            }
+        }
+    }
+
+    public right() {
+        const parentRect = (this.slider.nativeElement.getClientRects() as DOMRectList)[0];
+        for (const child of Array.from(this.slider.nativeElement.children)) {
+            const rect = (child.getClientRects() as DOMRectList)[0];
+            const beyondBorder = rect.left > parentRect.right;
+            if (beyondBorder) {
+                child.scrollIntoView({ behavior: "smooth", block: "start" });
+                break;
+            }
+        }
+    }
 }

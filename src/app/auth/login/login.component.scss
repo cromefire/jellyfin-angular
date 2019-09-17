@@ -1,22 +1,28 @@
-:host(jellyfin-login) {
+:host {
+    height: 100%;
+    width: 100%;
+}
+
+form {
     height: 100%;
     width: 100%;
     display: flex;
 }
 
-.login-form {
+.mat-card {
     margin: auto;
-    display: flex;
     min-width: 50vmin;
-    min-height: 50vmin;
 
-    background-color: rgba(white, 0.1);
-    border-radius: 0.5rem;
-    padding: 1rem;
-
-    .container {
-        margin: auto;
+    mat-card-content {
         display: flex;
         flex-direction: column;
+    }
+
+    mat-card-actions {
+        display: flex;
+
+        button {
+            margin-left: auto;
+        }
     }
 }
