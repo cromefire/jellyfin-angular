@@ -1,20 +1,20 @@
 {
   "configVersion": 1,
-  "timestamp": 1569101007979,
-  "index": "/index.html",
+  "timestamp": 1569101437311,
+  "index": "/jellyfin-angular/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/4.946164f6b1e4e8e9d17b.js",
-        "/favicon.png",
-        "/index.html",
-        "/main.7dec484d5db3461b4c4b.js",
-        "/polyfills.74baf714bb472f3c46e8.js",
-        "/runtime.4c173a62dd6cd7b63a0c.js",
-        "/styles.a857d424a8a545cbc216.css"
+        "/jellyfin-angular/4.946164f6b1e4e8e9d17b.js",
+        "/jellyfin-angular/favicon.png",
+        "/jellyfin-angular/index.html",
+        "/jellyfin-angular/main.7dec484d5db3461b4c4b.js",
+        "/jellyfin-angular/polyfills.74baf714bb472f3c46e8.js",
+        "/jellyfin-angular/runtime.4c173a62dd6cd7b63a0c.js",
+        "/jellyfin-angular/styles.a857d424a8a545cbc216.css"
       ],
       "patterns": []
     },
@@ -23,37 +23,37 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "/assets/icons/icon-128x128.png",
-        "/assets/icons/icon-144x144.png",
-        "/assets/icons/icon-152x152.png",
-        "/assets/icons/icon-192x192.png",
-        "/assets/icons/icon-384x384.png",
-        "/assets/icons/icon-512x512.png",
-        "/assets/icons/icon-72x72.png",
-        "/assets/icons/icon-96x96.png",
-        "/assets/icons/jellyfin.svg"
+        "/jellyfin-angular/assets/icons/icon-128x128.png",
+        "/jellyfin-angular/assets/icons/icon-144x144.png",
+        "/jellyfin-angular/assets/icons/icon-152x152.png",
+        "/jellyfin-angular/assets/icons/icon-192x192.png",
+        "/jellyfin-angular/assets/icons/icon-384x384.png",
+        "/jellyfin-angular/assets/icons/icon-512x512.png",
+        "/jellyfin-angular/assets/icons/icon-72x72.png",
+        "/jellyfin-angular/assets/icons/icon-96x96.png",
+        "/jellyfin-angular/assets/icons/jellyfin.svg"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/4.946164f6b1e4e8e9d17b.js": "e112c709caa591a4fb277e5ef9cbd02d78fb6dbe",
-    "/assets/icons/icon-128x128.png": "1911ca390545364f262a598d2d63d2009491afc3",
-    "/assets/icons/icon-144x144.png": "3ea12a2f4fee6207fdfc1e40f30665b84bfe3911",
-    "/assets/icons/icon-152x152.png": "24d0e91e35229eb25b794b1b3401ff9c74e88277",
-    "/assets/icons/icon-192x192.png": "3a659d3dfaaa0b48b7276f070f22e8dd97222344",
-    "/assets/icons/icon-384x384.png": "330f82b2280385edc7bfcba76788fc93ba58f654",
-    "/assets/icons/icon-512x512.png": "646dc6404af097d101a0be664e6645dbce52f592",
-    "/assets/icons/icon-72x72.png": "ff6a3ee6744dda7159caec782799df63396aa78d",
-    "/assets/icons/icon-96x96.png": "d7cb76f1f6c56de5f13640d1f6eaafef2e46aef7",
-    "/assets/icons/jellyfin.svg": "2724bb2daf195dad1192dcf0025046da81990703",
-    "/favicon.png": "60bff447b78f9543dc6005193153fd36c5ce3757",
-    "/index.html": "66d701af2ac824a2830d7a90159351aee8fa9841",
-    "/main.7dec484d5db3461b4c4b.js": "2031a65f7c4cb2fcf2a7d0c4adafba6c6b9d899f",
-    "/polyfills.74baf714bb472f3c46e8.js": "08c97940ba93ccc4121b85df6911d86011ef3fb8",
-    "/runtime.4c173a62dd6cd7b63a0c.js": "a746d35d97b54196486c09c85603cdfee3b2fa7c",
-    "/styles.a857d424a8a545cbc216.css": "22ef6f18d6429c21adb3f042345f5f4398eb65d2"
+    "/jellyfin-angular/4.946164f6b1e4e8e9d17b.js": "e112c709caa591a4fb277e5ef9cbd02d78fb6dbe",
+    "/jellyfin-angular/assets/icons/icon-128x128.png": "1911ca390545364f262a598d2d63d2009491afc3",
+    "/jellyfin-angular/assets/icons/icon-144x144.png": "3ea12a2f4fee6207fdfc1e40f30665b84bfe3911",
+    "/jellyfin-angular/assets/icons/icon-152x152.png": "24d0e91e35229eb25b794b1b3401ff9c74e88277",
+    "/jellyfin-angular/assets/icons/icon-192x192.png": "3a659d3dfaaa0b48b7276f070f22e8dd97222344",
+    "/jellyfin-angular/assets/icons/icon-384x384.png": "330f82b2280385edc7bfcba76788fc93ba58f654",
+    "/jellyfin-angular/assets/icons/icon-512x512.png": "646dc6404af097d101a0be664e6645dbce52f592",
+    "/jellyfin-angular/assets/icons/icon-72x72.png": "ff6a3ee6744dda7159caec782799df63396aa78d",
+    "/jellyfin-angular/assets/icons/icon-96x96.png": "d7cb76f1f6c56de5f13640d1f6eaafef2e46aef7",
+    "/jellyfin-angular/assets/icons/jellyfin.svg": "2724bb2daf195dad1192dcf0025046da81990703",
+    "/jellyfin-angular/favicon.png": "60bff447b78f9543dc6005193153fd36c5ce3757",
+    "/jellyfin-angular/index.html": "77567cfbade0846519b857bc13e6f1cf3172ba09",
+    "/jellyfin-angular/main.7dec484d5db3461b4c4b.js": "2031a65f7c4cb2fcf2a7d0c4adafba6c6b9d899f",
+    "/jellyfin-angular/polyfills.74baf714bb472f3c46e8.js": "08c97940ba93ccc4121b85df6911d86011ef3fb8",
+    "/jellyfin-angular/runtime.4c173a62dd6cd7b63a0c.js": "a746d35d97b54196486c09c85603cdfee3b2fa7c",
+    "/jellyfin-angular/styles.a857d424a8a545cbc216.css": "22ef6f18d6429c21adb3f042345f5f4398eb65d2"
   },
   "navigationUrls": [
     {
