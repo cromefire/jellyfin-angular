@@ -4,12 +4,14 @@
         <jellyfin-slider>
             <div class="tile landscape" *ngFor="let view of myMedia">
                 <mat-card mat-ripple>
-                    <img
-                        mat-card-image
-                        [src]="view.image"
-                        [alt]="view.subtitle"
-                        (dragstart)="$event.preventDefault()"
-                    />
+                    <div mat-card-image>
+                        <img
+                            class="inner-img"
+                            [src]="view.image"
+                            [alt]="view.subtitle"
+                            (dragstart)="$event.preventDefault()"
+                        />
+                    </div>
                     <mat-card-subtitle>
                         {{ view.subtitle }}
                     </mat-card-subtitle>
@@ -21,15 +23,21 @@
         <h2>Continue watching</h2>
         <jellyfin-slider>
             <div class="tile landscape" *ngFor="let movie of continueWatching">
-                <mat-card mat-ripple [matTooltip]="movie.originalTitle" matTooltipPosition="below" aria-label="movie.originalTitle">
-                    <img
-                        *ngIf="movie.image"
-                        mat-card-image
-                        [src]="movie.image"
-                        [alt]="movie.subtitle"
-                        (dragstart)="$event.preventDefault()"
-                    />
-                    <div *ngIf="!movie.image" mat-card-image class="image-na"></div>
+                <mat-card
+                    mat-ripple
+                    [matTooltip]="movie.originalTitle"
+                    matTooltipPosition="below"
+                    aria-label="movie.originalTitle"
+                >
+                    <div mat-card-image>
+                        <img
+                            *ngIf="movie.image"
+                            class="inner-img"
+                            [src]="movie.image"
+                            [alt]="movie.subtitle"
+                            (dragstart)="$event.preventDefault()"
+                        />
+                    </div>
                     <mat-card-subtitle>
                         {{ movie.subtitle }}
                         <div *ngIf="movie.year" class="year">
@@ -44,15 +52,21 @@
         <h2>Latest movies</h2>
         <jellyfin-slider>
             <div class="tile portrait" *ngFor="let movie of latestMovies">
-                <mat-card mat-ripple [matTooltip]="movie.originalTitle" matTooltipPosition="below" aria-label="movie.originalTitle">
-                    <img
-                        *ngIf="movie.image"
-                        mat-card-image
-                        [src]="movie.image"
-                        [alt]="movie.subtitle"
-                        (dragstart)="$event.preventDefault()"
-                    />
-                    <div *ngIf="!movie.image" mat-card-image class="image-na"></div>
+                <mat-card
+                    mat-ripple
+                    [matTooltip]="movie.originalTitle"
+                    matTooltipPosition="below"
+                    aria-label="movie.originalTitle"
+                >
+                    <div mat-card-image>
+                        <img
+                            *ngIf="movie.image"
+                            class="inner-img"
+                            [src]="movie.image"
+                            [alt]="movie.subtitle"
+                            (dragstart)="$event.preventDefault()"
+                        />
+                    </div>
                     <mat-card-subtitle>
                         {{ movie.subtitle }}
                         <div *ngIf="movie.year" class="year">

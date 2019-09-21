@@ -44,14 +44,16 @@ mat-card {
         }
     }
 
-    .mat-card-image {
+    .inner-img {
         margin-bottom: auto;
         user-select: none;
+        width: 100%;
     }
 
-    .image-na {
+    .mat-card-image {
+        margin-bottom: 0;
         flex-grow: 1;
-        background-color: rgba(0, 0, 0, 0.2);
+        display: flex;
     }
 }
 

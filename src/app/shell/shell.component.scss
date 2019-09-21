@@ -23,9 +23,14 @@ mat-toolbar {
     .brand {
         height: 32px;
         margin: auto;
+        transition: transform 0.25s ease-in;
 
         img {
-            height: 32px;
+            height: 100%;
+        }
+
+        &:hover {
+            transform: scale(1.2);
         }
     }
 }
