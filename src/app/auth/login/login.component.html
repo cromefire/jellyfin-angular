@@ -1,34 +1,75 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
-    <mat-card>
-        <mat-card-title>
-            Login
-        </mat-card-title>
-        <mat-card-content>
-            <mat-form-field>
-                <!-- Temporary -->
-                <input matInput formControlName="url" placeholder="Server URL" />
-                <mat-error *ngIf="loginForm.get('url').hasError('required')">
-                    The server URL is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput formControlName="username" placeholder="Username" />
-                <mat-error *ngIf="loginForm.get('username').hasError('required')">
-                    The username is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput formControlName="password" placeholder="Password" type="password" />
-                <mat-error *ngIf="loginForm.get('password').hasError('required')">
-                    The password is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">
-                Login
-            </button>
-        </mat-card-actions>
-    </mat-card>
-</form>
+<mat-card>
+    <mat-card-title>
+        Login
+    </mat-card-title>
+    <mat-card-content>
+        <mat-vertical-stepper #stepper [linear]="linear">
+            <!-- Temporary? -->
+            <mat-step [stepControl]="urlGroup" label="Connect" state="connect">
+                <form [formGroup]="urlGroup" (ngSubmit)="serverUrl()">
+                    <mat-form-field>
+                        <input matInput formControlName="url" placeholder="Server URL" />
+                        <mat-spinner matSuffix *ngIf="verifying" [diameter]="24"></mat-spinner>
+                        <mat-error *ngIf="urlGroup.get('url').hasError('required')">
+                            The server URL is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="urlGroup.get('url').hasError('url')">
+                            The server URL is <strong>invalid</strong>
+                        </mat-error>
+                        <mat-error *ngIf="urlGroup.get('url').hasError('connection')">
+                            <strong>Can't connect</strong> to the server
+                        </mat-error>
+                        <mat-error *ngIf="urlGroup.get('url').hasError('invalidServer')">
+                            Server is <strong>not a Jellyfin server</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button matStepperNext color="primary">Verify</button>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="loginForm" label="Login" state="login">
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <mat-form-field>
+                        <input matInput formControlName="username" placeholder="Username" />
+                        <mat-error *ngIf="loginForm.get('username').hasError('required')">
+                            The username is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input
+                            matInput
+                            formControlName="password"
+                            placeholder="Password"
+                            type="password"
+                        />
+                        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                            The password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="button-bar">
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button
+                            mat-raised-button
+                            class="left-space"
+                            matStepperNext
+                            [color]="loggingIn ? undefined : 'primary'"
+                        >
+                            <ng-container *ngIf="!loggingIn">Login</ng-container>
+                            <ng-container *ngIf="loggingIn">
+                                <mat-spinner diameter="24" class="button-spinner"></mat-spinner>
+                                Logging in
+                            </ng-container>
+                        </button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <ng-template matStepperIcon="connect">
+                <mat-icon>settings_ethernet</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="login">
+                <mat-icon>perm_identity</mat-icon>
+            </ng-template>
+        </mat-vertical-stepper>
+    </mat-card-content>
+</mat-card>

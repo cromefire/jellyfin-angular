@@ -8,7 +8,9 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
+    MatStepperModule,
     MatToolbarModule
 } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
@@ -59,7 +61,9 @@ const routes: Routes = [
         MatListModule,
         MatCardModule,
         ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatStepperModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     exports: [],
