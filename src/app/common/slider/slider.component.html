@@ -1,7 +1,16 @@
 <div class="wrapper">
     <button mat-fab class="scroll-fab left" [disabled]="isLeft" (click)="left()">&lt;</button>
     <button mat-fab class="scroll-fab right" [disabled]="isRight" (click)="right()">&gt;</button>
-    <div class="slider" #slider infinite-scroll horizontal (scrolled)="more()">
+    <div
+        class="slider"
+        #slider
+        infinite-scroll
+        [horizontal]="true"
+        [infiniteScrollDistance]="20"
+        [immediateCheck]="true"
+        [scrollWindow]="false"
+        (scrolled)="more()"
+    >
         <div class="start"></div>
         <ng-content></ng-content>
         <div class="end"></div>
