@@ -76,6 +76,8 @@ THE SOFTWARE.
 
 @angular/material/sidenav
 
+@angular/material/stepper
+
 @angular/material/toolbar
 
 @angular/material/tooltip
