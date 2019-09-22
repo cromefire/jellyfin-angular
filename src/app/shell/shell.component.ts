@@ -14,7 +14,9 @@ export class ShellComponent implements AfterViewInit {
 
     public ngAfterViewInit() {
         this.router.events.subscribe(() => {
-            this.sidemenu.close();
+            if (this.sidemenu) {
+                this.sidemenu.close();
+            }
         });
     }
 }

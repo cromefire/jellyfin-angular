@@ -33,11 +33,11 @@
     transition: opacity ease-in-out 0.25s;
 
     &.left {
-        left: 0;
+        left: 10px;
     }
 
     &.right {
-        right: 0;
+        right: 10px;
     }
 }
 
@@ -46,5 +46,6 @@
 
     &[disabled] {
         opacity: 0;
+        pointer-events: none;
     }
 }

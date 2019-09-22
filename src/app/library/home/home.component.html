@@ -3,21 +3,26 @@
         <h2>My Media</h2>
         <jellyfin-slider>
             <div class="tile landscape" *ngFor="let view of myMedia">
-                <mat-card mat-ripple>
-                    <div mat-card-image>
-                        <div class="img-wrapper">
-                            <img
-                                class="inner-img"
-                                [src]="view.image"
-                                [alt]="view.subtitle"
-                                (dragstart)="$event.preventDefault()"
-                            />
+                <a [routerLink]="viewUrl(view.type).toString()">
+                    <mat-card mat-ripple>
+                        <div mat-card-image>
+                            <div class="img-wrapper" *ngIf="view.image">
+                                <img
+                                    class="inner-img"
+                                    [src]="view.image"
+                                    [alt]="view.subtitle"
+                                    (dragstart)="$event.preventDefault()"
+                                />
+                            </div>
+                            <div class="no-image" *ngIf="!view.image">
+                                <mat-icon>{{ viewIcon(view.type) }}</mat-icon>
+                            </div>
                         </div>
-                    </div>
-                    <mat-card-subtitle>
-                        {{ view.subtitle }}
-                    </mat-card-subtitle>
-                </mat-card>
+                        <mat-card-subtitle>
+                            {{ view.subtitle }}
+                        </mat-card-subtitle>
+                    </mat-card>
+                </a>
             </div>
         </jellyfin-slider>
     </section>
@@ -40,7 +45,10 @@
                                 [alt]="movie.subtitle"
                                 (dragstart)="$event.preventDefault()"
                             />
-                            <mat-progress-bar [value]="movie.progress" color="accent"></mat-progress-bar>
+                            <mat-progress-bar
+                                [value]="movie.progress"
+                                color="accent"
+                            ></mat-progress-bar>
                         </div>
                     </div>
                     <mat-card-subtitle>

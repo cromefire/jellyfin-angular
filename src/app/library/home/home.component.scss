@@ -11,6 +11,11 @@
 .tile {
     padding: 0.5rem;
 
+    a {
+        text-decoration: none;
+        outline: none;
+    }
+
     &.landscape {
         .img-wrapper {
             margin: 0 auto;
@@ -21,13 +26,25 @@
         }
 
         .inner-img {
-            height: 8rem;
+            height: 9rem;
+        }
+
+        .no-image {
+            height: 9rem;
+            min-width: 16rem;
+            flex-grow: 1;
+
+            display: flex;
+
+            mat-icon {
+                margin: auto;
+            }
         }
     }
 
     &.portrait {
-        width: 8rem;
-        min-width: 8rem;
+        width: 9rem;
+        min-width: 9rem;
     }
 }
 
