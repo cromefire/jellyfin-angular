@@ -24,7 +24,7 @@
                             Server is <strong>not a Jellyfin server</strong>
                         </mat-error>
                     </mat-form-field>
-                    <button mat-raised-button matStepperNext color="primary">Verify</button>
+                    <button mat-raised-button matStepperNext color="accent">Verify</button>
                 </form>
             </mat-step>
             <mat-step [stepControl]="loginForm" label="Login" state="login">
@@ -52,7 +52,7 @@
                             mat-raised-button
                             class="left-space"
                             matStepperNext
-                            [color]="loggingIn ? undefined : 'primary'"
+                            color="accent"
                         >
                             <ng-container *ngIf="!loggingIn">Login</ng-container>
                             <ng-container *ngIf="loggingIn">

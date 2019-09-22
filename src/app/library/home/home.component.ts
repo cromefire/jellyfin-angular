@@ -3,16 +3,18 @@ import { map } from "rxjs/operators";
 import { AuthService } from "../../auth/auth.service";
 import { ApiService } from "../../common/api/api.service";
 
-export interface ViewTile {
+export interface Tile {
     image?: string;
     subtitle: string;
 }
 
-export interface MovieTile {
-    image?: string;
-    subtitle: string;
+export interface MovieTile extends Tile {
     year?: string | number;
     originalTitle: string | null;
+}
+
+export interface ContinueTile extends MovieTile {
+    progress: number;
 }
 
 @Component({
@@ -22,8 +24,8 @@ export interface MovieTile {
 })
 export class HomeComponent implements OnInit {
     // All images are just random tmdb images, inserted as design stubs
-    public myMedia: ViewTile[] = [];
-    public continueWatching: MovieTile[] = [];
+    public myMedia: Tile[] = [];
+    public continueWatching: ContinueTile[] = [];
     public latestMovies: MovieTile[] = [];
     public loaded = false;
 
@@ -76,10 +78,11 @@ export class HomeComponent implements OnInit {
                 map(resp => {
                     for (const item of resp.Items) {
                         const [title, cut] = this.sliceTitle(item.Name);
-                        const tile: MovieTile = {
+                        const tile: ContinueTile = {
                             subtitle: title,
                             year: new Date(item.PremiereDate).getFullYear(),
-                            originalTitle: cut ? item.Name : null
+                            originalTitle: cut ? item.Name : null,
+                            progress: item.UserData.PlayedPercentage
                         };
                         if (item.BackdropImageTags && item.BackdropImageTags.length > 0) {
                             tile.image = this.apiService.assembleUrl(

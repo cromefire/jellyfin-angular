@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import {
     MatButtonModule,
     MatCardModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRippleModule,
     MatTooltipModule
@@ -10,7 +11,7 @@ import {
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 import { HomeComponent } from "../library/home/home.component";
-import { SliderComponent } from "../library/home/slider/slider.component";
+import { SliderComponent } from "../common/slider/slider.component";
 import { ShellRoutingModule } from "./shell-routing.module";
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ShellRoutingModule } from "./shell-routing.module";
         MatRippleModule,
         MatProgressSpinnerModule,
         InfiniteScrollModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatProgressBarModule
     ],
     bootstrap: []
 })

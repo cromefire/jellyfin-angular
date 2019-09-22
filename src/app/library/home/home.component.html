@@ -40,6 +40,7 @@
                                 [alt]="movie.subtitle"
                                 (dragstart)="$event.preventDefault()"
                             />
+                            <mat-progress-bar [value]="movie.progress" color="accent"></mat-progress-bar>
                         </div>
                     </div>
                     <mat-card-subtitle>
