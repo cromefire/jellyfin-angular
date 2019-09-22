@@ -5,12 +5,14 @@
             <div class="tile landscape" *ngFor="let view of myMedia">
                 <mat-card mat-ripple>
                     <div mat-card-image>
-                        <img
-                            class="inner-img"
-                            [src]="view.image"
-                            [alt]="view.subtitle"
-                            (dragstart)="$event.preventDefault()"
-                        />
+                        <div class="img-wrapper">
+                            <img
+                                class="inner-img"
+                                [src]="view.image"
+                                [alt]="view.subtitle"
+                                (dragstart)="$event.preventDefault()"
+                            />
+                        </div>
                     </div>
                     <mat-card-subtitle>
                         {{ view.subtitle }}
@@ -30,13 +32,15 @@
                     aria-label="movie.originalTitle"
                 >
                     <div mat-card-image>
-                        <img
-                            *ngIf="movie.image"
-                            class="inner-img"
-                            [src]="movie.image"
-                            [alt]="movie.subtitle"
-                            (dragstart)="$event.preventDefault()"
-                        />
+                        <div class="img-wrapper">
+                            <img
+                                *ngIf="movie.image"
+                                class="inner-img"
+                                [src]="movie.image"
+                                [alt]="movie.subtitle"
+                                (dragstart)="$event.preventDefault()"
+                            />
+                        </div>
                     </div>
                     <mat-card-subtitle>
                         {{ movie.subtitle }}

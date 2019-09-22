@@ -12,13 +12,18 @@
     padding: 0.5rem;
 
     &.landscape {
-        min-width: 12rem;
-        width: 12rem;
+        .img-wrapper {
+            margin: 0 auto;
+        }
+
+        .inner-img {
+            height: 8rem;
+        }
     }
 
     &.portrait {
-        min-width: 8rem;
         width: 8rem;
+        min-width: 8rem;
     }
 }
 

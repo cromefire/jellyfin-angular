@@ -43,4 +43,8 @@
 
 .wrapper:hover .scroll-fab {
     opacity: 1;
+
+    &[disabled] {
+        opacity: 0;
+    }
 }

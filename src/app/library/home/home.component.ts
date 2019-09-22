@@ -64,8 +64,12 @@ export class HomeComponent implements OnInit {
             .get<any>(`/emby/Users/${this.authService.userId}/Items/Resume`, {
                 token: this.authService.token,
                 query: {
-                    Limit: "10",
-                    EnableImageType: "Thumb"
+                    Limit: "12",
+                    Recursive: "true",
+                    ImageTypeLimit: "1",
+                    EnableImageTypes: "Primary,Backdrop,Thumb",
+                    EnableTotalRecordCount: "false",
+                    MediaTypes: "Video"
                 }
             })
             .pipe(
@@ -77,11 +81,22 @@ export class HomeComponent implements OnInit {
                             year: new Date(item.PremiereDate).getFullYear(),
                             originalTitle: cut ? item.Name : null
                         };
-                        if (item.ImageTags.Thumb) {
+                        if (item.BackdropImageTags && item.BackdropImageTags.length > 0) {
                             tile.image = this.apiService.assembleUrl(
-                                `/emby/Items/${item.Id}/Images/Thumb`,
+                                `/emby/Items/${item.Id}/Images/Backdrop`,
                                 {
-                                    tag: item.ImageTags.Thumb,
+                                    tag: item.BackdropImageTags[0],
+                                    quality: "90",
+                                    maxWidth: "400",
+                                    maxHeight: "400"
+                                }
+                            );
+                        } else if (item.ImageTags && Object.keys(item.ImageTags).length > 0) {
+                            const imageType = Object.keys(item.ImageTags)[0];
+                            tile.image = this.apiService.assembleUrl(
+                                `/emby/Items/${item.Id}/Images/${imageType}`,
+                                {
+                                    tag: item.ImageTags[imageType],
                                     quality: "90",
                                     maxWidth: "400",
                                     maxHeight: "400"

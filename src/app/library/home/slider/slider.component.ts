@@ -1,12 +1,26 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import {
+    AfterContentInit,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    ViewChild
+} from "@angular/core";
 
 @Component({
     selector: "jellyfin-slider",
     templateUrl: "./slider.component.html",
     styleUrls: ["./slider.component.scss"]
 })
-export class SliderComponent {
+export class SliderComponent implements AfterContentInit {
     @ViewChild("slider", { static: true }) public slider: ElementRef<HTMLDivElement>;
+
+    constructor(private changeDetector: ChangeDetectorRef) {}
+
+    public ngAfterContentInit() {
+        this.slider.nativeElement.addEventListener("scroll", () => {
+            this.changeDetector.detectChanges();
+        });
+    }
 
     public more() {
         console.log("load more");
@@ -34,5 +48,19 @@ export class SliderComponent {
                 break;
             }
         }
+    }
+
+    public get isLeft() {
+        const parentRect = (this.slider.nativeElement.getClientRects() as DOMRectList)[0];
+        const rect = (this.slider.nativeElement.children[1].getClientRects() as DOMRectList)[0];
+        return rect.left >= parentRect.left;
+    }
+
+    public get isRight() {
+        const parentRect = (this.slider.nativeElement.getClientRects() as DOMRectList)[0];
+        const rect = (this.slider.nativeElement.children[
+            this.slider.nativeElement.children.length - 2
+        ].getClientRects() as DOMRectList)[0];
+        return rect.right <= parentRect.right;
     }
 }
