@@ -35,7 +35,8 @@ const routes: Routes = [
         path: "",
         component: ShellComponent,
         loadChildren: () => import("./shell/shell.module").then(mod => mod.ShellModule),
-        canLoad: [AuthGuard]
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
     }
 ];
 

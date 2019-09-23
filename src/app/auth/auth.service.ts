@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { Authenticated, AuthenticateRequest } from "../common/api/api";
 import { ApiService } from "../common/api/api.service";
 
@@ -10,10 +9,7 @@ export class AuthService {
     public token: string | null = null;
     public userId: string;
 
-    // store the URL so we can redirect after logging in
-    public redirectUrl: string;
-
-    constructor(private apiService: ApiService, private router: Router) {
+    constructor(private apiService: ApiService) {
         const token = localStorage.getItem("jellyfin-token");
         const userId = localStorage.getItem("jellyfin-user-id");
         if (token && userId) {
@@ -37,9 +33,6 @@ export class AuthService {
         localStorage.setItem("jellyfin-user-id", this.userId);
 
         // Navigate back to where the user was
-        this.router.navigateByUrl(this.redirectUrl || "/").then(() => {
-            this.redirectUrl = null;
-        });
         return true;
     }
 
@@ -48,5 +41,9 @@ export class AuthService {
         this.userId = null;
         localStorage.removeItem("jellyfin-token");
         localStorage.removeItem("jellyfin-user-id");
+    }
+
+    public get loggedIn() {
+        return this.userId && this.token;
     }
 }

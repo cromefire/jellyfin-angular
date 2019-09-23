@@ -17,6 +17,8 @@
     }
 
     &.landscape {
+        min-width: 16rem;
+
         .img-wrapper {
             margin: 0 auto;
 

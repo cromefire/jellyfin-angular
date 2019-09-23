@@ -1,5 +1,5 @@
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
-import { AfterContentInit, Component, ViewChild } from "@angular/core";
+import { AfterContentInit, Component, OnInit, ViewChild } from "@angular/core";
 import {
     AbstractControl,
     FormControl,
@@ -8,6 +8,7 @@ import {
     Validators
 } from "@angular/forms";
 import { MatStepper } from "@angular/material";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { ApiService } from "../../common/api/api.service";
 import { AuthService } from "../auth.service";
 
@@ -22,7 +23,7 @@ import { AuthService } from "../auth.service";
         }
     ]
 })
-export class LoginComponent implements AfterContentInit {
+export class LoginComponent implements AfterContentInit, OnInit {
     public verifying = 0;
     // urlGroup: Temporary
     public urlGroup: FormGroup;
@@ -33,7 +34,12 @@ export class LoginComponent implements AfterContentInit {
     @ViewChild("stepper", { static: true }) private stepper: MatStepper;
     private verifyAbort = new AbortController();
 
-    constructor(private authService: AuthService, public apiService: ApiService) {
+    constructor(
+        private authService: AuthService,
+        public apiService: ApiService,
+        private activatedRoute: ActivatedRoute,
+        private router: Router
+    ) {
         this.urlGroup = new FormGroup({
             url: new FormControl(
                 this.apiService.base,
@@ -45,6 +51,12 @@ export class LoginComponent implements AfterContentInit {
             username: new FormControl("", [Validators.required]),
             password: new FormControl("", [Validators.required])
         });
+    }
+
+    public ngOnInit() {
+        if (this.apiService.base && this.authService.loggedIn) {
+            this.next();
+        }
     }
 
     public ngAfterContentInit() {
@@ -61,7 +73,9 @@ export class LoginComponent implements AfterContentInit {
 
             this.loggingIn = true;
             try {
-                await this.authService.login(username, password);
+                if (await this.authService.login(username, password)) {
+                    this.next();
+                }
             } finally {
                 this.loggingIn = false;
             }
@@ -114,5 +128,15 @@ export class LoginComponent implements AfterContentInit {
         } finally {
             this.verifying--;
         }
+    }
+
+    private next() {
+        this.activatedRoute.queryParams.subscribe((params: Params) => {
+            if (params.next) {
+                this.router.navigateByUrl(params.next);
+            } else {
+                this.router.navigate(["/"]);
+            }
+        });
     }
 }
