@@ -3,7 +3,6 @@ import { Router, UrlTree } from "@angular/router";
 import { map } from "rxjs/operators";
 import { AuthService } from "../../auth/auth.service";
 import { ApiService } from "../../common/api/api.service";
-import { assertNever } from "../../utils";
 
 export interface Tile {
     image?: string;
@@ -61,7 +60,8 @@ export class HomeComponent implements OnInit {
                 return this.router.createUrlTree(["home_videos"]);
             }
             default: {
-                assertNever(type);
+                // TODO: Implement more
+                // assertNever(type);
             }
         }
     }
@@ -75,7 +75,8 @@ export class HomeComponent implements OnInit {
                 return "camera_alt";
             }
             default: {
-                assertNever(type);
+                // TODO: Implement more
+                // assertNever(type);
             }
         }
     }
