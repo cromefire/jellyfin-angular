@@ -1,7 +1,13 @@
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 import { AfterContentInit, Component, OnInit, ViewChild } from "@angular/core";
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
-import { MatStepper } from "@angular/material";
+import {
+    AbstractControl,
+    FormControl,
+    FormGroup,
+    ValidationErrors,
+    Validators
+} from "@angular/forms";
+import { MatStepper } from "@angular/material/stepper";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { ApiService } from "../../common/api/api.service";
 import { AuthService } from "../auth.service";

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
-import { MatSidenav } from "@angular/material";
+import { MatSidenav } from "@angular/material/sidenav";
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
     styleUrls: ["./shell.component.scss"]
 })
 export class ShellComponent implements AfterViewInit {
-    @ViewChild("#sidemenu", { static: false }) private sidemenu: MatSidenav;
+    @ViewChild("#sidemenu") private sidemenu: MatSidenav;
 
     constructor(private router: Router) {}
 

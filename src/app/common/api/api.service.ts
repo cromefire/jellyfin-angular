@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { from, Observable, throwError } from "rxjs";
 import { catchError, retry, switchMap } from "rxjs/operators";
 import { AuthService } from "../../auth/auth.service";
