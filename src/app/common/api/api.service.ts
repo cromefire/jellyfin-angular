@@ -27,7 +27,7 @@ export abstract class CommonApiService {
     ): Observable<Response>;
 
     public assembleUrl(url: string, query?: { [key: string]: string }): string {
-        const assembledUrl = new URL(url, this.base);
+        const assembledUrl = new URL(`${this.base}/${url}`);
         if (query) {
             for (const [key, value] of Object.entries(query)) {
                 assembledUrl.searchParams.append(key, value);
