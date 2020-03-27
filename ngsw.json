@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1585340943483,
+  "timestamp": 1585342516226,
   "index": "/jellyfin-angular/index.html",
   "assetGroups": [
     {
@@ -8,12 +8,12 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/jellyfin-angular/4.6eccaa354fda0d397770.js",
+        "/jellyfin-angular/4.663adc9cbeefea3af575.js",
         "/jellyfin-angular/favicon.png",
         "/jellyfin-angular/index.html",
-        "/jellyfin-angular/main.bd46a22caaacfca7f9ec.js",
+        "/jellyfin-angular/main.ed1ed3f53a7712814711.js",
         "/jellyfin-angular/polyfills.c60fc13f7fbc6c9a090f.js",
-        "/jellyfin-angular/runtime.7e044539370ae8eecde3.js",
+        "/jellyfin-angular/runtime.abe6375ab3ce24a04c3c.js",
         "/jellyfin-angular/styles.f4026c8e19a8fb09fe1d.css"
       ],
       "patterns": []
@@ -38,7 +38,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/jellyfin-angular/4.6eccaa354fda0d397770.js": "833d62449e67dc52d83b3bf2e27f38b7e9e4778c",
+    "/jellyfin-angular/4.663adc9cbeefea3af575.js": "e23eb05fd6a20406854e6c52bf2bb9913c4e5475",
     "/jellyfin-angular/assets/icons/icon-128x128.png": "1911ca390545364f262a598d2d63d2009491afc3",
     "/jellyfin-angular/assets/icons/icon-144x144.png": "3ea12a2f4fee6207fdfc1e40f30665b84bfe3911",
     "/jellyfin-angular/assets/icons/icon-152x152.png": "24d0e91e35229eb25b794b1b3401ff9c74e88277",
@@ -49,10 +49,10 @@
     "/jellyfin-angular/assets/icons/icon-96x96.png": "d7cb76f1f6c56de5f13640d1f6eaafef2e46aef7",
     "/jellyfin-angular/assets/icons/jellyfin.svg": "2724bb2daf195dad1192dcf0025046da81990703",
     "/jellyfin-angular/favicon.png": "60bff447b78f9543dc6005193153fd36c5ce3757",
-    "/jellyfin-angular/index.html": "367fcb33d220e7666b40837d0381e73d2786d2ee",
-    "/jellyfin-angular/main.bd46a22caaacfca7f9ec.js": "9cb6857c91c240f7ec00b73f1dd5a1b32ff74ffc",
+    "/jellyfin-angular/index.html": "016abbf906a3205bfee95c4071e01b93dd937074",
+    "/jellyfin-angular/main.ed1ed3f53a7712814711.js": "a4008a5aab5057de6c45d609d1e11153fd3d6ac9",
     "/jellyfin-angular/polyfills.c60fc13f7fbc6c9a090f.js": "77a2a34561db664ec095a633584d7fa698239642",
-    "/jellyfin-angular/runtime.7e044539370ae8eecde3.js": "504e900e4be1eb24938463a04075a15296fc9664",
+    "/jellyfin-angular/runtime.abe6375ab3ce24a04c3c.js": "78f926a50fdac48cbc8fd85aa0d34e5558527316",
     "/jellyfin-angular/styles.f4026c8e19a8fb09fe1d.css": "9ddaa0a8c90e1640f6662dec875a61ec8dcd5c28"
   },
   "navigationUrls": [
