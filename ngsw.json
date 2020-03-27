@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1585343685528,
+  "timestamp": 1585343826907,
   "index": "/jellyfin-angular/index.html",
   "assetGroups": [
     {
@@ -8,12 +8,12 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/jellyfin-angular/4.14c85757481f953edec5.js",
+        "/jellyfin-angular/4.cc9249477bc8ec591fbd.js",
         "/jellyfin-angular/favicon.png",
         "/jellyfin-angular/index.html",
         "/jellyfin-angular/main.d3a47be40568f2fb0973.js",
         "/jellyfin-angular/polyfills.072f202d8a079a51e513.js",
-        "/jellyfin-angular/runtime.9d5b9c878fbcbe1c4a92.js",
+        "/jellyfin-angular/runtime.dae2df2d97404bc9231c.js",
         "/jellyfin-angular/styles.8c6db5ea21f943a2f20b.css"
       ],
       "patterns": []
@@ -38,7 +38,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/jellyfin-angular/4.14c85757481f953edec5.js": "d9c494e7444311a0188b309b12c28daacd0a3a0f",
+    "/jellyfin-angular/4.cc9249477bc8ec591fbd.js": "d175a1aa37a1c819203ed84ec3773ebd0ebc85d0",
     "/jellyfin-angular/assets/icons/icon-128x128.png": "1911ca390545364f262a598d2d63d2009491afc3",
     "/jellyfin-angular/assets/icons/icon-144x144.png": "3ea12a2f4fee6207fdfc1e40f30665b84bfe3911",
     "/jellyfin-angular/assets/icons/icon-152x152.png": "24d0e91e35229eb25b794b1b3401ff9c74e88277",
@@ -49,10 +49,10 @@
     "/jellyfin-angular/assets/icons/icon-96x96.png": "d7cb76f1f6c56de5f13640d1f6eaafef2e46aef7",
     "/jellyfin-angular/assets/icons/jellyfin.svg": "2724bb2daf195dad1192dcf0025046da81990703",
     "/jellyfin-angular/favicon.png": "60bff447b78f9543dc6005193153fd36c5ce3757",
-    "/jellyfin-angular/index.html": "46514f2d642ce9840145c5381f44d9c241b120e0",
+    "/jellyfin-angular/index.html": "ece1e942cc5864a4d57626d56c75bb75d08b65dd",
     "/jellyfin-angular/main.d3a47be40568f2fb0973.js": "f44016e58cdc09c08385edc137837f5b99806e05",
     "/jellyfin-angular/polyfills.072f202d8a079a51e513.js": "28771765b5778506d9ca8c5de7b475846e75f755",
-    "/jellyfin-angular/runtime.9d5b9c878fbcbe1c4a92.js": "12f302382f126888215b95bf0abb73aef191638c",
+    "/jellyfin-angular/runtime.dae2df2d97404bc9231c.js": "26cff8e0b8d8402c28e1683eda2c6a726cd0acaf",
     "/jellyfin-angular/styles.8c6db5ea21f943a2f20b.css": "60451dfe7330b3f717c9b0c9638c72c5e13a10bf"
   },
   "navigationUrls": [
