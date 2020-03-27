@@ -3,7 +3,7 @@
         <h2>My Media</h2>
         <jellyfin-slider>
             <ng-container *ngFor="let view of myMedia">
-                <div class="tile landscape" *ngIf="view.type">
+                <div class="tile landscape" *ngIf="viewUrl(view.type)">
                     <a [routerLink]="viewUrl(view.type).toString()">
                         <mat-card mat-ripple>
                             <div mat-card-image>
