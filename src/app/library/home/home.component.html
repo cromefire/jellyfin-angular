@@ -27,7 +27,11 @@
         </jellyfin-slider>
     </section>
     <section>
-        <h2>Continue watching</h2>
+        <h2 class="details-heading">
+            <a href="#">
+                <span class="heading">Continue watching</span><span class="arrow"> &gt;</span>
+            </a>
+        </h2>
         <jellyfin-slider>
             <div class="tile landscape" *ngFor="let movie of continueWatching">
                 <mat-card

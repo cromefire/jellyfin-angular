@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
 
     private loadViews() {
         return this.apiService
-            .get<any>(`/emby/Users/${this.authService.userId}/Views`)
+            .get<any>(`/Users/${this.authService.userId}/Views`)
             .pipe(
                 map(resp => {
                     for (const item of resp.Items) {
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
                         };
                         if (item.ImageTags.Primary) {
                             tile.image = this.apiService.assembleUrl(
-                                `/emby/Items/${item.Id}/Images/Primary`,
+                                `/Items/${item.Id}/Images/Primary`,
                                 {
                                     tag: item.ImageTags.Primary,
                                     quality: "90",
@@ -110,8 +110,7 @@ export class HomeComponent implements OnInit {
 
     private loadStarted() {
         return this.apiService
-            .get<any>(`/emby/Users/${this.authService.userId}/Items/Resume`, {
-                token: this.authService.token,
+            .get<any>(`/Users/${this.authService.userId}/Items/Resume`, {
                 query: {
                     Limit: "12",
                     Recursive: "true",
@@ -133,7 +132,7 @@ export class HomeComponent implements OnInit {
                         };
                         if (item.BackdropImageTags && item.BackdropImageTags.length > 0) {
                             tile.image = this.apiService.assembleUrl(
-                                `/emby/Items/${item.Id}/Images/Backdrop`,
+                                `/Items/${item.Id}/Images/Backdrop`,
                                 {
                                     tag: item.BackdropImageTags[0],
                                     quality: "90",
@@ -144,7 +143,7 @@ export class HomeComponent implements OnInit {
                         } else if (item.ImageTags && Object.keys(item.ImageTags).length > 0) {
                             const imageType = Object.keys(item.ImageTags)[0];
                             tile.image = this.apiService.assembleUrl(
-                                `/emby/Items/${item.Id}/Images/${imageType}`,
+                                `/Items/${item.Id}/Images/${imageType}`,
                                 {
                                     tag: item.ImageTags[imageType],
                                     quality: "90",
@@ -162,8 +161,7 @@ export class HomeComponent implements OnInit {
 
     private loadLatest() {
         return this.apiService
-            .get<any>(`/emby/Users/${this.authService.userId}/Items/Latest`, {
-                token: this.authService.token,
+            .get<any>(`/Users/${this.authService.userId}/Items/Latest`, {
                 query: {
                     Limit: "10",
                     EnableImageType: "Primary"
@@ -180,7 +178,7 @@ export class HomeComponent implements OnInit {
                         };
                         if (item.ImageTags.Primary) {
                             tile.image = this.apiService.assembleUrl(
-                                `/emby/Items/${item.Id}/Images/Primary`,
+                                `/Items/${item.Id}/Images/Primary`,
                                 {
                                     tag: item.ImageTags.Primary,
                                     quality: "90",

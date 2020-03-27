@@ -9,7 +9,7 @@
 }
 
 .tile {
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 1rem;
 
     a {
         text-decoration: none;
@@ -87,4 +87,31 @@ mat-card {
 
 mat-spinner {
     margin: auto;
+}
+
+.details-heading {
+    display: flex;
+
+    & > a {
+        color: currentColor;
+        text-decoration: none;
+        margin-right: auto;
+        outline: none;
+
+        & > .arrow {
+            transition: margin-left 0.25s ease-out;
+        }
+
+        &:hover {
+            & > .heading {
+                text-decoration: underline;
+                text-decoration-width: 0.1em;
+                text-decoration-thickness: 0.1em;
+            }
+
+            & > .arrow {
+                margin-left: 0.5em;
+            }
+        }
+    }
 }

@@ -1,1 +1,17 @@
-<p>movies works!</p>
+<div
+    class="list-wrapper"
+    infinite-scroll
+    [scrollWindow]="false"
+    [infiniteScrollDistance]="20"
+    [immediateCheck]="true"
+    [horizontal]="false"
+    (scrolled)="loadMore()"
+>
+    <mat-grid-list cols="7">
+        <mat-grid-tile *ngFor="let movie of movies">
+            <mat-card mat-ripple>
+                <img mat-card-image *ngIf="movie.image" [src]="movie.image" />
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

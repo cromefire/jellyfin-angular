@@ -26,9 +26,15 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar>
-            <button mat-icon-button (click)="sidemenu.open()"><mat-icon>menu</mat-icon></button>
-            <a routerLink="/">Jellyfin</a>
-            <a routerLink="/" class="brand"><img src="assets/icons/jellyfin.svg" alt="logo" /></a>
+            <div class="left">
+                <button mat-icon-button (click)="sidemenu.open()"><mat-icon>menu</mat-icon></button>
+                <a routerLink="/">Jellyfin</a>
+            </div>
+            <div class="center">
+                <a routerLink="/" class="brand">
+                    <img src="assets/icons/jellyfin.svg" alt="logo" />
+                </a>
+            </div>
         </mat-toolbar>
         <main>
             <router-outlet></router-outlet>

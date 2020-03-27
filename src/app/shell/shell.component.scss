@@ -13,6 +13,24 @@ mat-sidenav-content {
 mat-toolbar {
     position: fixed;
     z-index: 100;
+    display: grid;
+    grid-template: "left center right" 100% / 1fr 1fr 1fr;
+
+    .left {
+        grid-area: left;
+        display: flex;
+
+        & > * {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+
+    .center {
+        display: flex;
+        grid-area: center;
+        height: 100%;
+    }
 
     a {
         color: inherit;
@@ -21,9 +39,9 @@ mat-toolbar {
     }
 
     .brand {
-        height: 32px;
+        height: 80%;
         margin: auto;
-        transition: transform 0.25s ease-in;
+        transition: transform 0.25s ease-out;
 
         img {
             height: 100%;

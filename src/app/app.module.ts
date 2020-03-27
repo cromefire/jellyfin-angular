@@ -10,6 +10,7 @@ import {
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule
 } from "@angular/material";
@@ -64,7 +65,8 @@ const routes: Routes = [
         ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
         ReactiveFormsModule,
         MatStepperModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSnackBarModule
     ],
     providers: [],
     exports: [],

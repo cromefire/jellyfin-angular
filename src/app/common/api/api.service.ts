@@ -1,12 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { from, Observable } from "rxjs";
-import { retry, switchMap } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material";
+import { from, Observable, throwError } from "rxjs";
+import { catchError, retry, switchMap } from "rxjs/operators";
+import { AuthService } from "../../auth/auth.service";
 import { DeviceService } from "../device/device.service";
 
 // General interface
 export interface RequestOptions {
-    token?: string;
     headers?: { [header: string]: string };
     query?: { [key: string]: string };
 }
@@ -61,13 +62,24 @@ export abstract class CommonApiService {
     providedIn: "root"
 })
 export class ApiService extends CommonApiService {
-    constructor(private http: HttpClient, deviceService: DeviceService) {
+    constructor(
+        private http: HttpClient,
+        deviceService: DeviceService,
+        private snackBar: MatSnackBar,
+        private authService: AuthService
+    ) {
         super(deviceService);
         this.base = localStorage.getItem("jellyfin-url");
+        if (this.base) {
+            const preconnect = document.createElement("link");
+            preconnect.rel = "preconnect";
+            preconnect.href = this.base;
+            document.head.append(preconnect);
+        }
     }
 
     public get<Response>(url: string, options: RequestOptions = {}): Observable<Response> {
-        return from(this.assembleAuthHeader(options.token)).pipe(
+        return from(this.assembleAuthHeader(this.authService.token)).pipe(
             switchMap(
                 (authHeader): Observable<Response> => {
                     const headers = Object.assign(options.headers || {}, {
@@ -79,7 +91,24 @@ export class ApiService extends CommonApiService {
                     });
                 }
             ),
-            retry(3)
+            retry(3),
+            catchError(error => {
+                if (error.status === 401) {
+                    this.snackBar
+                        .open("Error: Token invalid", "Login again", {
+                            duration: 10000
+                        })
+                        .onAction()
+                        .subscribe(() => {
+                            return this.authService.logout();
+                        });
+                } else {
+                    this.snackBar.open("Error while loading data", null, {
+                        duration: 5000
+                    });
+                }
+                return throwError(error);
+            })
         );
     }
 
@@ -88,7 +117,7 @@ export class ApiService extends CommonApiService {
         request: Request,
         options: RequestOptions = {}
     ): Observable<Response> {
-        return from(this.assembleAuthHeader(options.token)).pipe(
+        return from(this.assembleAuthHeader(this.authService.token)).pipe(
             switchMap(authHeader => {
                 const headers = Object.assign(options.headers || {}, {
                     "X-Emby-Authorization": authHeader,

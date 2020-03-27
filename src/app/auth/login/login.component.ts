@@ -1,12 +1,6 @@
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 import { AfterContentInit, Component, OnInit, ViewChild } from "@angular/core";
-import {
-    AbstractControl,
-    FormControl,
-    FormGroup,
-    ValidationErrors,
-    Validators
-} from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
 import { MatStepper } from "@angular/material";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { ApiService } from "../../common/api/api.service";
@@ -73,7 +67,7 @@ export class LoginComponent implements AfterContentInit, OnInit {
 
             this.loggingIn = true;
             try {
-                if (await this.authService.login(username, password)) {
+                if (await this.authService.login(this.apiService.base, username, password)) {
                     this.next();
                 }
             } finally {
