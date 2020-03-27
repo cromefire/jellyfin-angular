@@ -96,7 +96,7 @@ export class LoginComponent implements AfterContentInit, OnInit {
         } catch (e) {
             return { url: { msg: "Invalid url", error: e } };
         }
-        url.pathname = "/emby/system/info/public";
+        url.pathname = `${url.pathname}/system/info/public`;
 
         this.verifying++;
         try {

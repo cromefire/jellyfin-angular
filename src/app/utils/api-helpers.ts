@@ -36,7 +36,7 @@ export class ItemHelper {
         const image = this.getFirstImage(imageTypes);
         if (image) {
             const url = new URL(apiUrl);
-            url.pathname = `/emby/Items/${this.item.Id}/Images/${image.type}`;
+            url.pathname = `${url.pathname}/Items/${this.item.Id}/Images/${image.type}`;
             for (const [key, value] of Object.entries(Object.assign({ tag: image.tag }, query))) {
                 url.searchParams.set(key, value);
             }
