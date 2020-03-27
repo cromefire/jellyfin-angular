@@ -1,4 +1,5 @@
 import { Item } from "../common/api/item";
+import { DeviceService } from "../common/device/device.service";
 
 interface Image {
     type: string;
@@ -44,4 +45,25 @@ export class ItemHelper {
         }
         return null;
     }
+}
+
+export async function assembleAuthHeader(deviceService: DeviceService, token?: string) {
+    const clientInfo = deviceService.client;
+
+    const query: { [key: string]: string } = {
+        Client: await clientInfo.getName(),
+        Device: await clientInfo.getDevice(),
+        DeviceId: await clientInfo.getDeviceId(),
+        Version: await clientInfo.getVersion()
+    };
+
+    if (token) {
+        query.Token = token;
+    }
+
+    const queryString = Object.entries(query)
+        .map(([key, value]) => `${key}="${value}"`)
+        .join(", ");
+
+    return `MediaBrowser ${queryString}`;
 }

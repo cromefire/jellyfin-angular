@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { from } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { Authenticated, AuthenticateRequest } from "../common/api/api";
-import { assembleAuthHeader } from "../common/api/api.service";
 import { DeviceService } from "../common/device/device.service";
+import { assembleAuthHeader } from "../utils/api-helpers";
 
 @Injectable({
     providedIn: "root"

@@ -4,33 +4,13 @@ import { MatSnackBar } from "@angular/material";
 import { from, Observable, throwError } from "rxjs";
 import { catchError, retry, switchMap } from "rxjs/operators";
 import { AuthService } from "../../auth/auth.service";
+import { assembleAuthHeader } from "../../utils/api-helpers";
 import { DeviceService } from "../device/device.service";
 
 // General interface
 export interface RequestOptions {
     headers?: { [header: string]: string };
     query?: { [key: string]: string };
-}
-
-export async function assembleAuthHeader(deviceService: DeviceService, token?: string) {
-    const clientInfo = deviceService.client;
-
-    const query: { [key: string]: string } = {
-        Client: await clientInfo.getName(),
-        Device: await clientInfo.getDevice(),
-        DeviceId: await clientInfo.getDeviceId(),
-        Version: await clientInfo.getVersion()
-    };
-
-    if (token) {
-        query.Token = token;
-    }
-
-    const queryString = Object.entries(query)
-        .map(([key, value]) => `${key}="${value}"`)
-        .join(", ");
-
-    return `MediaBrowser ${queryString}`;
 }
 
 export abstract class CommonApiService {
