@@ -2,28 +2,30 @@
     <section>
         <h2>My Media</h2>
         <jellyfin-slider>
-            <div class="tile landscape" *ngFor="let view of myMedia">
-                <a [routerLink]="viewUrl(view.type).toString()">
-                    <mat-card mat-ripple>
-                        <div mat-card-image>
-                            <div class="img-wrapper" *ngIf="view.image">
-                                <img
-                                    class="inner-img"
-                                    [src]="view.image"
-                                    [alt]="view.subtitle"
-                                    (dragstart)="$event.preventDefault()"
-                                />
+            <ng-container *ngFor="let view of myMedia">
+                <div class="tile landscape" *ngIf="view.type">
+                    <a [routerLink]="viewUrl(view.type).toString()">
+                        <mat-card mat-ripple>
+                            <div mat-card-image>
+                                <div class="img-wrapper" *ngIf="view.image">
+                                    <img
+                                        class="inner-img"
+                                        [src]="view.image"
+                                        [alt]="view.subtitle"
+                                        (dragstart)="$event.preventDefault()"
+                                    />
+                                </div>
+                                <div class="no-image" *ngIf="!view.image">
+                                    <mat-icon>{{ viewIcon(view.type) }}</mat-icon>
+                                </div>
                             </div>
-                            <div class="no-image" *ngIf="!view.image">
-                                <mat-icon>{{ viewIcon(view.type) }}</mat-icon>
-                            </div>
-                        </div>
-                        <mat-card-subtitle>
-                            {{ view.subtitle }}
-                        </mat-card-subtitle>
-                    </mat-card>
-                </a>
-            </div>
+                            <mat-card-subtitle>
+                                {{ view.subtitle }}
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </a>
+                </div>
+            </ng-container>
         </jellyfin-slider>
     </section>
     <section>
