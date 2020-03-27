@@ -12,6 +12,27 @@ export interface RequestOptions {
     query?: { [key: string]: string };
 }
 
+export async function assembleAuthHeader(deviceService: DeviceService, token?: string) {
+    const clientInfo = deviceService.client;
+
+    const query: { [key: string]: string } = {
+        Client: await clientInfo.getName(),
+        Device: await clientInfo.getDevice(),
+        DeviceId: await clientInfo.getDeviceId(),
+        Version: await clientInfo.getVersion()
+    };
+
+    if (token) {
+        query.Token = token;
+    }
+
+    const queryString = Object.entries(query)
+        .map(([key, value]) => `${key}="${value}"`)
+        .join(", ");
+
+    return `MediaBrowser ${queryString}`;
+}
+
 export abstract class CommonApiService {
     public base: string;
 
@@ -24,27 +45,6 @@ export abstract class CommonApiService {
         request: Request,
         options?: RequestOptions
     ): Observable<Response>;
-
-    protected async assembleAuthHeader(token?: string) {
-        const clientInfo = this.deviceService.client;
-
-        const query: { [key: string]: string } = {
-            Client: await clientInfo.getName(),
-            Device: await clientInfo.getDevice(),
-            DeviceId: await clientInfo.getDeviceId(),
-            Version: await clientInfo.getVersion()
-        };
-
-        if (token) {
-            query.Token = token;
-        }
-
-        const queryString = Object.entries(query)
-            .map(([key, value]) => `${key}="${value}"`)
-            .join(", ");
-
-        return `MediaBrowser ${queryString}`;
-    }
 
     public assembleUrl(url: string, query?: { [key: string]: string }): string {
         const assembledUrl = new URL(url, this.base);
@@ -79,7 +79,7 @@ export class ApiService extends CommonApiService {
     }
 
     public get<Response>(url: string, options: RequestOptions = {}): Observable<Response> {
-        return from(this.assembleAuthHeader(this.authService.token)).pipe(
+        return from(assembleAuthHeader(this.deviceService, this.authService.token)).pipe(
             switchMap(
                 (authHeader): Observable<Response> => {
                     const headers = Object.assign(options.headers || {}, {
@@ -117,7 +117,7 @@ export class ApiService extends CommonApiService {
         request: Request,
         options: RequestOptions = {}
     ): Observable<Response> {
-        return from(this.assembleAuthHeader(this.authService.token)).pipe(
+        return from(assembleAuthHeader(this.deviceService, this.authService.token)).pipe(
             switchMap(authHeader => {
                 const headers = Object.assign(options.headers || {}, {
                     "X-Emby-Authorization": authHeader,
