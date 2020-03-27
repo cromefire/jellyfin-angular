@@ -68,6 +68,8 @@ THE SOFTWARE.
 
 @angular/material/form-field
 
+@angular/material/grid-list
+
 @angular/material/icon
 
 @angular/material/list
@@ -77,6 +79,8 @@ THE SOFTWARE.
 @angular/material/progress-spinner
 
 @angular/material/sidenav
+
+@angular/material/snack-bar
 
 @angular/material/stepper
 
